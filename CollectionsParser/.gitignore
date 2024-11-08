@@ -1,0 +1,24 @@
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.vsp
+*.pdb
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore Rider and VS Code specific files
+.idea/
+.vscode/
+.vs/
+
+# Ignore configuration and secret files
+appsettings.json
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp

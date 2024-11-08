@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsParser", "CollectionsParser\CollectionsParser.csproj", "{8BACE424-7EF6-4548-AA07-F3049F20744B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BACE424-7EF6-4548-AA07-F3049F20744B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BACE424-7EF6-4548-AA07-F3049F20744B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BACE424-7EF6-4548-AA07-F3049F20744B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BACE424-7EF6-4548-AA07-F3049F20744B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

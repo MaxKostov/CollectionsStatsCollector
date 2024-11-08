@@ -1,0 +1,77 @@
+﻿@page "/"
+@using CollectionsParser.Services
+@inject NftService NftService
+
+<h3>NFT Stats</h3>
+
+@if (nftData == null)
+{
+    <p>Loading NFT data...</p>
+}
+else if (nftData.Total == null || nftData.Intervals == null)
+{
+    <p>Error: Data is incomplete or invalid.</p>
+}
+else
+{
+    <h4>Total Stats</h4>
+    <ul>
+        <li>Volume: @nftData.Total.Volume</li>
+        <li>Sales: @nftData.Total.Sales</li>
+        <li>Average Price: @nftData.Total.AveragePrice</li>
+        <li>Number of Owners: @nftData.Total.NumOwners</li>
+        <li>Market Cap: @nftData.Total.MarketCap</li>
+        <li>Floor Price: @nftData.Total.FloorPrice @nftData.Total.FloorPriceSymbol</li>
+    </ul>
+
+    <h4>Interval Stats</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Interval</th>
+                <th>Volume</th>
+                <th>Volume Diff</th>
+                <th>Volume Change</th>
+                <th>Sales</th>
+                <th>Sales Diff</th>
+                <th>Average Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var interval in nftData.Intervals)
+            {
+                <tr>
+                    <td>@interval.Interval</td>
+                    <td>@interval.Volume</td>
+                    <td>@interval.VolumeDiff</td>
+                    <td>@interval.VolumeChange</td>
+                    <td>@interval.Sales</td>
+                    <td>@interval.SalesDiff</td>
+                    <td>@interval.AveragePrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private NftStats nftData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            nftData = await NftService.GetNftStatsAsync();
+            if (nftData == null || nftData.Total == null || nftData.Intervals == null)
+            {
+                Console.WriteLine("Error: Failed to load NFT data.");
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching data: {ex.Message}");
+        }
+    }
+}
